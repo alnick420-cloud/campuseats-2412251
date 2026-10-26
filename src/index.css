@@ -5,6 +5,11 @@
    do nothing until you build the components that use them.
    You do not need to write CSS in this course; focus on React.
    ===================================================================== */
+.category-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
 
 :root {
   --green: #00685e;

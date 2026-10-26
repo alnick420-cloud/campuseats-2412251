@@ -10,6 +10,11 @@ function App() {
   const [cart, setCart] = useState([])
   const [selectedVendorId, setSelectedVendorId] = useState(vendors[0].id)
   const selectedVendor = vendors.find((v) => v.id === selectedVendorId)
+  const categories = ['All', ...new Set(selectedVendor.menu.map((item) => item.category))]
+
+function handleCategoryClick(category) {
+  console.log('selected category:', category)
+}
 
 function handleAddToCart(item) {
     setCart((prevCart) => [...prevCart, item])   // a NEW array, never cart.push()
@@ -35,6 +40,17 @@ function handleAddToCart(item) {
           </section>
           <section>
             <h2 className="section-title">Menu: {selectedVendor.name}</h2>
+            <div className="category-bar">
+               {categories.map((category) => (
+            <button
+                key={category}
+                className="btn"
+                 onClick={() => handleCategoryClick(category)}
+              >
+               {category}
+            </button>
+              ))}
+            </div>
           <MenuList items={selectedVendor.menu} onAdd={handleAddToCart} />
         </section>
       </main>
